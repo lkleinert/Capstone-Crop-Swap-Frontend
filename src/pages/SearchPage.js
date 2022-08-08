@@ -1,12 +1,14 @@
+import { useLocation } from "react-router-dom";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import "./SearchPage.css";
 import UserFarmSqaure from "../components/UserFarmSquare.js";
-import SignUpForm from "../components/SignUpForm";
 
-const SearchPage = ({ userData }) => {
-  console.log(userData);
+const SearchPage = () => {
+  const state = useLocation();
+  console.log(state.state);
+  const users = state.state.users;
 
-  const userArray = userData.map((user) => {
+  const userArray = users.map((user) => {
     return (
       <div>
         <UserFarmSqaure
@@ -36,7 +38,11 @@ const SearchPage = ({ userData }) => {
       </Row>
       <Row className="users-container">
         <Col xs={12} className="banner">
-          {userArray}
+          {userArray.length > 0 ? (
+            userArray
+          ) : (
+            <h1>No produce found. Please try other search filters.</h1>
+          )}
         </Col>
       </Row>
     </Container>

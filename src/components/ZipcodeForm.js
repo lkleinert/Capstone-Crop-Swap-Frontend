@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import "./ZipcodeForm.css";
@@ -15,13 +16,23 @@ const ZipcodeForm = () => {
       .get(`${process.env.REACT_APP_BACKEND_URL}/users`, {
         params: { zipcode: zipcode },
       })
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        const users = res.data;
+        console.log(users);
+        navigate("/users", { state: { users } });
+      });
   };
 
+  const navigate = useNavigate();
+
   //need to link to SearchPage page and pass in results of findUsers! Also, need some conditional for loading page
+  //useNavigate hook
   const submitZipCode = (e) => {
     e.preventDefault();
     findUsers();
+    // const users = findUsers();
+    // console.log(users);
+    // navigate("/users", { state: { users }, replace: true });
     setZipcode("");
   };
 
