@@ -1,9 +1,32 @@
+import { useState } from "react";
+import axios from "axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import "./ZipcodeForm.css";
 
 const ZipcodeForm = () => {
+  const [zipcode, setZipcode] = useState("");
+
+  const handleChange = (e) => {
+    setZipcode(e.target.value);
+  };
+
+  const findUsers = () => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/users`, {
+        params: { zipcode: zipcode },
+      })
+      .then((res) => console.log(res.data));
+  };
+
+  //need to link to SearchPage page and pass in results of findUsers! Also, need some conditional for loading page
+  const submitZipCode = (e) => {
+    e.preventDefault();
+    findUsers();
+    setZipcode("");
+  };
+
   return (
-    <Form>
+    <Form onSubmit={submitZipCode}>
       <Row className="zipcode">
         <Col xs={{ span: 4, offset: 4 }}>
           <Form.Group controlId="formZipcodeSearch">
@@ -11,6 +34,8 @@ const ZipcodeForm = () => {
             <Form.Control
               type="text"
               placeholder="Enter your zipcode"
+              value={zipcode}
+              onChange={handleChange}
               required
             />
           </Form.Group>

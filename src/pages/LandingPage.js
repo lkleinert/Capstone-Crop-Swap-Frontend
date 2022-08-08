@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "./LandingPage.css";
 import SignUpModal from "../components/SignUpModal";
 import LogInModal from "../components/LogInModal";
