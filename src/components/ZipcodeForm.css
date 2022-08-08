@@ -1,0 +1,15 @@
+
+.zipcode {
+    /* border: 2px black solid; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    background-color: #fbf9f973;
+    border-radius: 20px;
+}
+
+.search {
+    margin: 25px;
+}

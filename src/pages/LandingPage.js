@@ -1,6 +1,6 @@
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "./LandingPage.css";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
-//figure out spacing in rows and columns
+import ZipcodeForm from "../components/ZipcodeForm";
 
 const LandingPage = () => {
   return (
@@ -23,21 +23,7 @@ const LandingPage = () => {
           <h1>Find and Trade Fresh Local Produce</h1>
         </Col>
       </Row>
-      <Form>
-        <Row className="zipcode">
-          <Col xs={{ span: 4, offset: 4 }}>
-            <Form.Group controlId="formZipcode">
-              <Form.Label></Form.Label>
-              <Form.Control type="zipcode" placeholder="Enter your zipcode" />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Button variant="secondary" type="submit" className="submit">
-              Search
-            </Button>
-          </Col>
-        </Row>
-      </Form>
+      <ZipcodeForm></ZipcodeForm>
     </Container>
   );
 };
