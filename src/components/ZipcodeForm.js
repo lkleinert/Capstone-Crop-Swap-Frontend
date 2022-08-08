@@ -30,9 +30,6 @@ const ZipcodeForm = () => {
   const submitZipCode = (e) => {
     e.preventDefault();
     findUsers();
-    // const users = findUsers();
-    // console.log(users);
-    // navigate("/users", { state: { users }, replace: true });
     setZipcode("");
   };
 

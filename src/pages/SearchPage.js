@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import "./SearchPage.css";
-import UserFarmSqaure from "../components/UserFarmSquare.js";
+import UserFarmSquare from "../components/UserFarmSquare.js";
 
 const SearchPage = () => {
   const state = useLocation();
@@ -11,7 +11,7 @@ const SearchPage = () => {
   const userArray = users.map((user) => {
     return (
       <div>
-        <UserFarmSqaure
+        <UserFarmSquare
           username={user.username}
           crops={user.Crops}
           zipcode={user.zipcode}
