@@ -1,0 +1,53 @@
+.top-bar {
+    /* border: black solid 2px; */
+    justify-content: center;
+    align-items: center;
+}
+.landing-pic {
+    /* border: 2px black solid; */
+    background-image: url("https://img.freepik.com/premium-photo/child-father-garden-with-vegetables-their-hands_73944-8714.jpg?w=1380");
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 60vh;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.banner {
+    /* border: 2px black solid; */
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    /* align-content: center; */
+}
+.banner h1 {
+    /* border: 2px black solid; */
+    font-size: 3rem;
+    background-color: #fbf9f973;
+    border-radius: 20px;
+    padding: 50px;
+    width: 100vw;
+    margin: 0px;
+    text-align: center;
+}
+
+.zipcode {
+    /* border: 2px black solid; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    background-color: #fbf9f973;
+    border-radius: 20px;
+}
+
+.submit {
+    margin: 25px;
+}
+
