@@ -8,7 +8,11 @@ const ZipcodeForm = () => {
         <Col xs={{ span: 4, offset: 4 }}>
           <Form.Group controlId="formZipcode">
             <Form.Label></Form.Label>
-            <Form.Control type="zipcode" placeholder="Enter your zipcode" />
+            <Form.Control
+              type="text"
+              placeholder="Enter your zipcode"
+              required
+            />
           </Form.Group>
         </Col>
         <Col>

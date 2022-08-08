@@ -1,6 +1,7 @@
 import { Container, Col, Row, Button } from "react-bootstrap";
 import "./SearchPage.css";
 import UserFarmSqaure from "../components/UserFarmSquare.js";
+import SignUpForm from "../components/SignUpForm";
 
 const SearchPage = ({ userData }) => {
   console.log(userData);

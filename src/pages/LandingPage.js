@@ -1,9 +1,22 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import "./LandingPage.css";
+// import SignUpForm from "../components/SignUpForm";
+import SignUpModal from "../components/SignUpModal";
+import LogInModal from "../components/LogInModal";
 import ZipcodeForm from "../components/ZipcodeForm";
 
 const LandingPage = () => {
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [showLogIn, setShowLogIn] = useState(false);
+
+  const handleShowSignUp = () => setShowSignUp(true);
+  const handleCloseSignUp = () => setShowSignUp(false);
+
+  const handleShowLogIn = () => setShowLogIn(true);
+  const handleCloseLogIn = () => setShowLogIn(false);
+
   return (
     <>
       <Link end to="/users">
@@ -18,14 +31,22 @@ const LandingPage = () => {
             <h1>CropSwap🌱</h1>
           </Col>
           <Col>
-            <Button variant="warning" type="submit">
+            <Button variant="warning" onClick={handleShowSignUp}>
               Sign Up
             </Button>
+            <SignUpModal
+              showSignUp={showSignUp}
+              handleCloseSignUp={handleCloseSignUp}
+            />
           </Col>
           <Col>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={handleShowLogIn}>
               Log In
             </Button>
+            <LogInModal
+              showLogIn={showLogIn}
+              handleCloseLogIn={handleCloseLogIn}
+            />
           </Col>
         </Row>
         <Row className="landing-pic">
