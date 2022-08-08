@@ -6,7 +6,7 @@ const ZipcodeForm = () => {
     <Form>
       <Row className="zipcode">
         <Col xs={{ span: 4, offset: 4 }}>
-          <Form.Group controlId="formZipcode">
+          <Form.Group controlId="formZipcodeSearch">
             <Form.Label></Form.Label>
             <Form.Control
               type="text"
