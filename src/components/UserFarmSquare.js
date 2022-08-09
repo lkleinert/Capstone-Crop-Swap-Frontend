@@ -2,7 +2,8 @@ import { Card } from "react-bootstrap";
 
 const UserFarmSquare = ({ username, crops, zipcode }) => {
   // console.log(username);
-  //how to print out each available crop name? also, have both available and growing...
+  //how to print out each available crop name? also, crops-available and create an array
+  //map and display another component for each crop-> if more than 3, add "and more!"
   // console.log(crops);
   // console.log(zipcode);
   return (
