@@ -6,7 +6,7 @@ import SignUpModal from "../components/SignUpModal";
 import LogInModal from "../components/LogInModal";
 import ZipcodeForm from "../components/ZipcodeForm";
 
-const LandingPage = () => {
+const LandingPage = ({ setAuth }) => {
   const [showSignUp, setShowSignUp] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
 
@@ -36,6 +36,7 @@ const LandingPage = () => {
             <SignUpModal
               showSignUp={showSignUp}
               handleCloseSignUp={handleCloseSignUp}
+              setAuth={setAuth}
             />
           </Col>
           <Col>

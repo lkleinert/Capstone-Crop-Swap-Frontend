@@ -1,17 +1,60 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
 import LandingPage from "./pages/LandingPage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authUser, setAuthUser] = useState("");
+
+  const setAuth = (boolean, username) => {
+    setIsAuthenticated(boolean);
+    setAuthUser(username);
+  };
+
+  const isAuth = async () => {
+    try {
+      const response = await fetch(
+        "https://crop-swap-backend.herokuapp.com/verified",
+        {
+          method: "POST",
+          headers: { token: localStorage.token },
+        }
+      );
+
+      const parseRes = await response.json();
+
+      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    isAuth();
+  });
+
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/"
+          element={
+            !isAuthenticated ? (
+              <LandingPage setAuth={setAuth} />
+            ) : (
+              <Navigate to={`/users/${authUser}`} />
+            )
+          }
+        />
         <Route path="/users" element={<SearchPage />} />
-        <Route path="/users/:id" element={<ProfilePage />} />
+        <Route
+          path="/users/:id"
+          element={<ProfilePage authUser={authUser} />}
+        />
         <Route path="*" element={"404 Error: Page Not Found"} />
       </Routes>
     </div>
