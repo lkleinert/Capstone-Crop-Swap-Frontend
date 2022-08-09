@@ -55,7 +55,7 @@ function App() {
         <Route path="/users" element={<SearchPage />} />
         <Route
           path="/users/:id"
-          element={<ProfilePage authUser={authUser} />}
+          element={<ProfilePage authUser={authUser} setAuth={setAuth} />}
         />
         <Route path="*" element={"404 Error: Page Not Found"} />
       </Routes>
