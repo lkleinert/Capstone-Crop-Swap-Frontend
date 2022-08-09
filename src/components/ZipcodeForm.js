@@ -18,7 +18,7 @@ const ZipcodeForm = () => {
       })
       .then((res) => {
         const users = res.data;
-        console.log(users);
+        // console.log(users);
         navigate("/users", { state: { users } });
       });
   };
