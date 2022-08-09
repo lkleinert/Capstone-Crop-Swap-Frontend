@@ -46,6 +46,7 @@ const LandingPage = ({ setAuth }) => {
             <LogInModal
               showLogIn={showLogIn}
               handleCloseLogIn={handleCloseLogIn}
+              setAuth={setAuth}
             />
           </Col>
         </Row>

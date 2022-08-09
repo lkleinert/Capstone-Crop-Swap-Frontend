@@ -1,14 +1,14 @@
 import { Modal, Button } from "react-bootstrap";
 import LogInForm from "./LogInForm";
 
-const LogInModal = ({ showLogIn, handleCloseLogIn }) => {
+const LogInModal = ({ showLogIn, handleCloseLogIn, setAuth }) => {
   return (
     <Modal show={showLogIn}>
       <Modal.Header>
         <Modal.Title>Log In</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <LogInForm />
+        <LogInForm setAuth={setAuth} />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleCloseLogIn}>

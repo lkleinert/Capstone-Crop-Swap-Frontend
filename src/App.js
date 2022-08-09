@@ -27,7 +27,7 @@ function App() {
 
       const parseRes = await response.json();
 
-      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+      parseRes.valid === true ? setAuth(true, parseRes.user) : setAuth(false);
     } catch (err) {
       console.error(err.message);
     }
