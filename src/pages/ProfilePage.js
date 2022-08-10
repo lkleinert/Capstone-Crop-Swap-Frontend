@@ -3,9 +3,14 @@ import { Container, Col, Row, Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "./ProfilePage.css";
 import { useEffect, useState } from "react";
+import EditBioModal from "../components/EditBioModal";
 
 const ProfilePage = ({ authUser, setAuth }) => {
   const [user, setUser] = useState("");
+  const [showEditBio, setShowEditBio] = useState(false);
+
+  const handleShowEditBio = () => setShowEditBio(true);
+  const handleCloseEditBio = () => setShowEditBio(false);
 
   const logoutUser = () => {
     localStorage.clear();
@@ -67,7 +72,18 @@ const ProfilePage = ({ authUser, setAuth }) => {
           <h2>Bio</h2>
           <p>
             {!user.bio ? "Fill me out!" : user.bio}{" "}
-            {authUser === id ? <Button>Edit</Button> : ""}
+            {authUser === id ? (
+              <>
+                <Button onClick={handleShowEditBio}>Edit</Button>
+                <EditBioModal
+                  showEditBio={showEditBio}
+                  handleCloseEditBio={handleCloseEditBio}
+                  authUser={authUser}
+                />
+              </>
+            ) : (
+              ""
+            )}
           </p>
           <Card>
             <Card.Body>
