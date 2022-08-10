@@ -1,0 +1,9 @@
+.zipcode-search-page {
+    /* border: 2px black solid; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+}

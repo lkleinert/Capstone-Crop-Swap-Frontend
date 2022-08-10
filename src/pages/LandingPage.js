@@ -18,18 +18,12 @@ const LandingPage = ({ setAuth }) => {
 
   return (
     <>
-      <Link end to="/users">
-        Search
-      </Link>
-      <br />
-      <Link to="/users/:id">User Profile</Link>
-      <br />
       <Container fluid>
         <Row className="top-bar m-5 mb-6">
-          <Col xs={7}>
+          <Col>
             <h1>CropSwap🌱</h1>
           </Col>
-          <Col>
+          <Col xs={{ span: 1, offset: 4 }}>
             <Button variant="warning" onClick={handleShowSignUp}>
               Sign Up
             </Button>
