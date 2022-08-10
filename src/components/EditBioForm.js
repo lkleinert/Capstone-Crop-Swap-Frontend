@@ -2,8 +2,8 @@ import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 
-const BioForm = ({ authUser, handleCloseEditBio }) => {
-  const [bio, setBio] = useState("");
+const BioForm = ({ user, handleCloseEditBio }) => {
+  const [bio, setBio] = useState(user.bio);
 
   const onChange = (e) => {
     setBio(e.target.value);
@@ -11,7 +11,7 @@ const BioForm = ({ authUser, handleCloseEditBio }) => {
 
   const updateBio = (bio) => {
     axios
-      .patch(`${process.env.REACT_APP_BACKEND_URL}/users/${authUser}`, {
+      .patch(`${process.env.REACT_APP_BACKEND_URL}/users/${user.username}`, {
         bio: bio,
       })
       .then()
@@ -21,7 +21,7 @@ const BioForm = ({ authUser, handleCloseEditBio }) => {
   const onSubmitForm = (e) => {
     e.preventDefault();
     updateBio(bio);
-    setBio("");
+    setBio(bio);
     handleCloseEditBio();
   };
 
