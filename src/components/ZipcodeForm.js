@@ -11,26 +11,12 @@ const ZipcodeForm = () => {
     setZipcode(e.target.value);
   };
 
-  const findUsers = () => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/users`, {
-        params: { zipcode: zipcode },
-      })
-      .then((res) => {
-        const users = res.data;
-        // console.log(users);
-        navigate("/users", { state: { users } });
-      });
-  };
-
   const navigate = useNavigate();
 
-  //need to link to SearchPage page and pass in results of findUsers! Also, need some conditional for loading page
-  //useNavigate hook
+  //Links to SearchPage page, and passes in zipcode. Need conditional logic for loading page-> spinner
   const submitZipCode = (e) => {
     e.preventDefault();
-    findUsers();
-    setZipcode("");
+    navigate("/users", { state: { zipcode } });
   };
 
   return (
@@ -49,7 +35,12 @@ const ZipcodeForm = () => {
           </Form.Group>
         </Col>
         <Col>
-          <Button variant="secondary" type="submit" className="search">
+          <Button
+            variant="secondary"
+            type="submit"
+            className="search"
+            disabled={zipcode.length < 5}
+          >
             Search
           </Button>
         </Col>
