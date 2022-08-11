@@ -18,7 +18,7 @@ function App() {
   const isAuth = async () => {
     try {
       const response = await fetch(
-        "https://crop-swap-backend.herokuapp.com/verified",
+        `${process.env.REACT_APP_BACKEND_URL}/verified`,
         {
           method: "POST",
           headers: { token: localStorage.token },

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Container, Col, Row, Button, Card, ListGroup } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
 import { useEffect, useState } from "react";
 import EditBioModal from "../components/EditBioModal";
@@ -13,6 +13,13 @@ const ProfilePage = ({ authUser, setAuth }) => {
 
   const handleShowEditBio = () => setShowEditBio(true);
   const handleCloseEditBio = () => setShowEditBio(false);
+
+  let navigate = useNavigate();
+
+  const onSearch = () => {
+    console.log(user.zipcode);
+    navigate("/users", { state: user.zipcode });
+  };
 
   const logoutUser = () => {
     localStorage.clear();
@@ -72,7 +79,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
           </Col>
         ) : null}
         <Col>
-          <Button variant="primary" type="input" href="/users">
+          <Button variant="primary" type="input" onClick={onSearch}>
             Search
           </Button>
         </Col>

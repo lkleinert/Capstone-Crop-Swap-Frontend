@@ -8,7 +8,7 @@ import axios from "axios";
 
 const SearchPage = () => {
   const state = useLocation();
-  const zipcode = state.state.zipcode;
+  const zipcode = state.state;
 
   //only current zipcode can be stored in state to trigger rerendering.  If we have crops too, rendering is continuous
   //do we even need zipcode and current crops in state though?
