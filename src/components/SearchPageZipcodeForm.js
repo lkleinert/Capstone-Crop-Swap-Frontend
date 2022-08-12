@@ -33,7 +33,7 @@ const SearchPageZipcodeForm = ({
   return (
     <Form onSubmit={submitZipCode}>
       <Row className="zipcode-search-page">
-        <Col xs={{ span: 4, offset: 1 }}>
+        <Col xs={5}>
           <Form.Group controlId="formZipcodeSearch">
             <Form.Label></Form.Label>
             <Form.Control
@@ -45,17 +45,17 @@ const SearchPageZipcodeForm = ({
             />
           </Form.Group>
         </Col>
-        <Col xs={3}>
+        <Col xs={5}>
           <Button
             variant="secondary"
             type="submit"
             className="search"
             disabled={zipInput.length < 5}
           >
-            Crops
+            Search Zipcode
           </Button>
         </Col>
-        <Col xs={3}>
+        {/* <Col xs={3}>
           <Button
             variant="secondary"
             type="submit"
@@ -64,7 +64,7 @@ const SearchPageZipcodeForm = ({
           >
             Search
           </Button>
-        </Col>
+        </Col> */}
       </Row>
     </Form>
   );

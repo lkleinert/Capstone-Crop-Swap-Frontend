@@ -39,6 +39,11 @@ function App() {
     isAuth();
   });
 
+  //to delete local storage when editing code for now
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
   return (
     <div className="App">
       <Routes>

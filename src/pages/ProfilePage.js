@@ -5,10 +5,10 @@ const ProfilePage = () => {
   return (
     <Container fluid>
       <Row className="top-bar m-5 mb-6">
-        <Col xs={7}>
+        <Col>
           <h1>CropSwap🌱</h1>
         </Col>
-        <Col>
+        <Col xs={{ span: 1, offset: 4 }}>
           <Button variant="warning" type="link" href="/">
             Home
           </Button>

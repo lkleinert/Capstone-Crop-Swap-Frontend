@@ -4,14 +4,13 @@ import { Container, Col, Row, Button, Spinner } from "react-bootstrap";
 import "./SearchPage.css";
 import UserFarmSquare from "../components/UserFarmSquare.js";
 import SearchPageZipcodeForm from "../components/SearchPageZipcodeForm";
+import CropsDropDown from "../components/CropsDropDown";
 import axios from "axios";
 
 const SearchPage = () => {
   const state = useLocation();
   const zipcode = state.state.zipcode;
 
-  //only current zipcode can be stored in state to trigger rerendering.  If we have crops too, rendering is continuous
-  //do we even need zipcode and current crops in state though?
   const [currentZipcode, setCurrentZipcode] = useState(zipcode);
   const [currentCrops, setCurrentCrops] = useState([]);
   const [currentUsers, setCurrentUsers] = useState([]);
@@ -31,7 +30,10 @@ const SearchPage = () => {
         const cropsAvailable = [];
         for (const user of users) {
           for (const crop of user.Crops) {
-            cropsAvailable.push(crop.available);
+            cropsAvailable.push({
+              label: crop.available,
+              value: crop.available,
+            });
           }
         }
         setCurrentCrops(cropsAvailable);
@@ -45,11 +47,28 @@ const SearchPage = () => {
     // setLoading(true);
   }, []);
 
+  // // FILTERING USERS WITHOUT CROPS -> can't figure this out-> user.Crops for 85022 -> one is 2, one is 0
+  // const userList = (currentUsers) => {
+  //   for (const user of currentUsers) {
+  //     console.log(user.Crops.length);
+  //   }
+  // };
+  // // invoke function
+  // userList(currentUsers);
+
+  // filter to just include users that HAVE crops, but return is undefined?
+  const usersWithCrops = (currentUsers) => {
+    currentUsers.filter((user) => user.Crops !== []);
+  };
+  const usersDisplay = usersWithCrops(currentUsers);
+  console.log(usersDisplay);
+
   const userArray = currentUsers.map((user) => {
     return (
       <div>
         <UserFarmSquare
           username={user.username}
+          name={user.firstName}
           crops={user.Crops}
           zipcode={user.zipcode}
         />
@@ -63,24 +82,27 @@ const SearchPage = () => {
     return (
       <Container fluid>
         <Row className="top-bar m-5 mb-6">
-          <Col>
+          <Col xs={3}>
             <h1>CropSwap🌱</h1>
           </Col>
-          {/* <Col xs={{ span: 1, offset: 2 }}>
-          <Button variant="warning" type="link" href="/">
-            Home
-          </Button>
-        </Col> */}
-          <Col>
-            {/* <Button variant="primary" type="input">
-            Find Crops
-          </Button> */}
+          <Col xs={{ span: 1 }}>
+            <Button variant="warning" type="link" href="/">
+              Home
+            </Button>
+          </Col>
+          <Col xs={{ span: 6, offset: 2 }}>
             <SearchPageZipcodeForm
               currentZipcode={currentZipcode}
               setCurrentZipcode={setCurrentZipcode}
-              // setCurrentCrops={setCurrentCrops}
               findUsers={findUsers}
             ></SearchPageZipcodeForm>
+          </Col>
+          <Col xs={{ offset: 7 }}>
+            <CropsDropDown
+              currentCrops={currentCrops}
+              currentZipcode={currentZipcode}
+              findUsers={findUsers}
+            ></CropsDropDown>
           </Col>
         </Row>
         <Row className="users-container">

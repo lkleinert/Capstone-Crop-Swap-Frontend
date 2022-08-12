@@ -23,7 +23,7 @@ const LandingPage = ({ setAuth }) => {
           <Col>
             <h1>CropSwap🌱</h1>
           </Col>
-          <Col xs={{ span: 1, offset: 4 }}>
+          <Col xs={{ span: 2, offset: 4 }}>
             <Button variant="warning" onClick={handleShowSignUp}>
               Sign Up
             </Button>

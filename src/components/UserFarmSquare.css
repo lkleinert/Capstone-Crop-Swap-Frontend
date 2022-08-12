@@ -1,0 +1,21 @@
+.card {
+    width: 400px !important;
+    height: 400px !important;
+}
+.image-container  {
+    background-color: orange;
+    width: 400px; 
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+.card-img {
+    border: 2px solid black;
+    height: 100%;
+    width: 100%;
+}
+
+/* .card-body {
+    display: flex;
+    flex-direction: row;
+} */
