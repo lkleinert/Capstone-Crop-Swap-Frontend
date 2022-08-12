@@ -5,7 +5,8 @@
 }
 .landing-pic {
     /* border: 2px black solid; */
-    background-image: url("https://img.freepik.com/premium-photo/child-father-garden-with-vegetables-their-hands_73944-8714.jpg?w=1380");
+    /* background-image: url("https://img.freepik.com/premium-photo/child-father-garden-with-vegetables-their-hands_73944-8714.jpg?w=1380"); */
+    background-image: url("../../public/crop_images/LandingPageFinal.jpg");
     background-repeat: no-repeat, repeat;
     background-position: center;
     background-size: cover;

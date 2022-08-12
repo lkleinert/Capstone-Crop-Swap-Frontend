@@ -1,11 +1,12 @@
 .card {
-    width: 400px !important;
-    height: 400px !important;
+    width: 375px !important;
+    height: 375px !important;
+    margin: 40px !important;
 }
 .image-container  {
-    background-color: orange;
-    width: 400px; 
-    height: 300px;
+    /* background-color: orange; */
+    width: 375px !important; 
+    height: 275px !important;
     align-items: center;
     justify-content: center;
 }
@@ -16,6 +17,15 @@
 }
 
 /* .card-body {
-    display: flex;
-    flex-direction: row;
+   width: 100px;
+   height: 100px;
+} */
+
+.crop-details {
+    background-color: rgb(163, 226, 163);
+    border-radius: 20px;
+}
+
+/* .user-button {
+    margin: 7px;
 } */

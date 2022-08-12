@@ -16,10 +16,11 @@ const CropsDropDown = ({ currentCrops, currentZipcode, findUsers }) => {
       selectedCropArray.push(crop.label);
     }
     findUsers(currentZipcode, selectedCropArray);
+    setSelectedOptions([]);
   };
   return (
     <div style={{ width: "40%", justifyContent: "center", display: "flex" }}>
-      <Col xs={10}>
+      <Col xs={{ span: 12, offset: 11 }}>
         <MultiSelect
           onChange={setSelectedOptions}
           options={displayedCrops}

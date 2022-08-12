@@ -71,12 +71,12 @@ const SearchPage = () => {
           <Col xs={3}>
             <h1>CropSwap🌱</h1>
           </Col>
-          <Col xs={{ span: 1 }}>
+          <Col xs={{ span: 0, offset: 0 }}>
             <Button variant="warning" type="link" href="/">
               Home
             </Button>
           </Col>
-          <Col xs={{ span: 6, offset: 2 }}>
+          <Col xs={{ span: 5, offset: 2 }}>
             <SearchPageZipcodeForm
               currentZipcode={currentZipcode}
               setCurrentZipcode={setCurrentZipcode}
