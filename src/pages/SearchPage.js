@@ -23,12 +23,14 @@ const SearchPage = () => {
       })
       .then((res) => {
         const users = res.data;
-        setCurrentUsers(users);
-        return users;
+        const filteredUsers = users.filter((user) => user.Crops.length > 0);
+        console.log(filteredUsers);
+        setCurrentUsers(filteredUsers);
+        return filteredUsers;
       })
-      .then((users) => {
+      .then((filteredUsers) => {
         const cropsAvailable = [];
-        for (const user of users) {
+        for (const user of filteredUsers) {
           for (const crop of user.Crops) {
             cropsAvailable.push({
               label: crop.available,
@@ -46,22 +48,6 @@ const SearchPage = () => {
     findUsers(currentZipcode, currentCrops);
     // setLoading(true);
   }, []);
-
-  // // FILTERING USERS WITHOUT CROPS -> can't figure this out-> user.Crops for 85022 -> one is 2, one is 0
-  // const userList = (currentUsers) => {
-  //   for (const user of currentUsers) {
-  //     console.log(user.Crops.length);
-  //   }
-  // };
-  // // invoke function
-  // userList(currentUsers);
-
-  // filter to just include users that HAVE crops, but return is undefined?
-  const usersWithCrops = (currentUsers) => {
-    currentUsers.filter((user) => user.Crops !== []);
-  };
-  const usersDisplay = usersWithCrops(currentUsers);
-  console.log(usersDisplay);
 
   const userArray = currentUsers.map((user) => {
     return (

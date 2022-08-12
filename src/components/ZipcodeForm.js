@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import "./ZipcodeForm.css";
 
@@ -13,10 +12,10 @@ const ZipcodeForm = () => {
 
   const navigate = useNavigate();
 
-  //Links to SearchPage page, and passes in zipcode. Need conditional logic for loading page-> spinner
+  //Links to SearchPage page, and passes in zipcode as state.
   const submitZipCode = (e) => {
     e.preventDefault();
-    navigate("/users", { state: { zipcode } });
+    navigate("/users", { state: zipcode });
   };
 
   return (

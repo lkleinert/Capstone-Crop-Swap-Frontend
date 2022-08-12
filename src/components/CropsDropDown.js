@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Button, Col } from "react-bootstrap";
-// import Multiselect from "react-bootstrap-multiselect";
-// import * as mdb from "mdb-ui-kit";
-// import { Multiselect } from "multiselect-react-dropdown";
 import { MultiSelect } from "react-multi-select-component";
-// import "./CropsDropDown.css";
 
 const CropsDropDown = ({ currentCrops, currentZipcode, findUsers }) => {
-  //want to make it so we can search multiple crops
+  //displayedCrops populates dropdown options
   const displayedCrops = currentCrops;
+
+  //dropdown menu holds state for selectedOptions
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleOnClick = () => {
@@ -17,7 +15,6 @@ const CropsDropDown = ({ currentCrops, currentZipcode, findUsers }) => {
     for (const crop of selectedOptions) {
       selectedCropArray.push(crop.label);
     }
-    // console.log(selectedCropArray);
     findUsers(currentZipcode, selectedCropArray);
   };
   return (
