@@ -9,7 +9,7 @@ import axios from "axios";
 
 const SearchPage = () => {
   const state = useLocation();
-  const zipcode = state.state.zipcode;
+  const zipcode = state.state;
 
   const [currentZipcode, setCurrentZipcode] = useState(zipcode);
   const [currentCrops, setCurrentCrops] = useState([]);

@@ -18,7 +18,7 @@ function App() {
   const isAuth = async () => {
     try {
       const response = await fetch(
-        "https://crop-swap-backend.herokuapp.com/verified",
+        `${process.env.REACT_APP_BACKEND_URL}/verified`,
         {
           method: "POST",
           headers: { token: localStorage.token },
@@ -60,7 +60,7 @@ function App() {
         <Route path="/users" element={<SearchPage />} />
         <Route
           path="/users/:id"
-          element={<ProfilePage authUser={authUser} />}
+          element={<ProfilePage authUser={authUser} setAuth={setAuth} />}
         />
         <Route path="*" element={"404 Error: Page Not Found"} />
       </Routes>
