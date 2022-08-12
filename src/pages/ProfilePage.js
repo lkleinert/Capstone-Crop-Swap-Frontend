@@ -4,15 +4,19 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
 import { useEffect, useState } from "react";
 import EditBioModal from "../components/EditBioModal";
+import AddCropModal from "../components/AddCropModal";
 
 const ProfilePage = ({ authUser, setAuth }) => {
   const [user, setUser] = useState("");
   const [availableCrops, setAvailableCrops] = useState([]);
   const [growingCrops, setGrowingCrops] = useState([]);
   const [showEditBio, setShowEditBio] = useState(false);
+  const [showAddCrop, setShowAddCrop] = useState(false);
 
   const handleShowEditBio = () => setShowEditBio(true);
   const handleCloseEditBio = () => setShowEditBio(false);
+  const handleShowAddCrop = () => setShowAddCrop(true);
+  const handleCloseAddCrop = () => setShowAddCrop(false);
 
   let navigate = useNavigate();
 
@@ -24,6 +28,18 @@ const ProfilePage = ({ authUser, setAuth }) => {
   const logoutUser = () => {
     localStorage.clear();
     setAuth(false, "");
+  };
+
+  const addAvailableCrop = (crop) => {
+    const newCrops = [...availableCrops];
+    newCrops.push(crop);
+    setAvailableCrops(newCrops);
+  };
+
+  const addGrowingCrop = (crop) => {
+    const newCrops = [...growingCrops];
+    newCrops.push(crop);
+    setGrowingCrops(newCrops);
   };
 
   const { id } = useParams();
@@ -53,6 +69,8 @@ const ProfilePage = ({ authUser, setAuth }) => {
     getUser(id);
     getCrops(id);
   }, [id]);
+
+  console.log(availableCrops);
 
   return (
     <Container fluid>
@@ -109,6 +127,20 @@ const ProfilePage = ({ authUser, setAuth }) => {
           </p>
           <Row>
             <h2>Crops</h2>
+            {authUser === id ? (
+              <>
+                <Button onClick={handleShowAddCrop}>Add Crop</Button>
+                <AddCropModal
+                  showAddCrop={showAddCrop}
+                  handleCloseAddCrop={handleCloseAddCrop}
+                  user={user}
+                  addAvailableCrop={addAvailableCrop}
+                  addGrowingCrop={addGrowingCrop}
+                />
+              </>
+            ) : (
+              ""
+            )}
             <Col>
               <Card>
                 <Card.Body>

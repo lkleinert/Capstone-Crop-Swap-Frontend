@@ -43,7 +43,6 @@ const LogInForm = ({ setAuth }) => {
   return (
     <Form onSubmit={onSubmitForm}>
       <Form.Group className="mb-2" controlId="formUsername">
-        {/* <Form.Label></Form.Label> */}
         <Form.Control
           type="text"
           name="username"
