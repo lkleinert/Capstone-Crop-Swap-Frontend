@@ -12,6 +12,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
   const [growingCrops, setGrowingCrops] = useState([]);
   const [showEditBio, setShowEditBio] = useState(false);
   const [showAddCrop, setShowAddCrop] = useState(false);
+  const [bio, setBio] = useState("");
 
   const handleShowEditBio = () => setShowEditBio(true);
   const handleCloseEditBio = () => setShowEditBio(false);
@@ -21,7 +22,6 @@ const ProfilePage = ({ authUser, setAuth }) => {
   let navigate = useNavigate();
 
   const onSearch = () => {
-    console.log(user.zipcode);
     navigate("/users", { state: user.zipcode });
   };
 
@@ -42,6 +42,10 @@ const ProfilePage = ({ authUser, setAuth }) => {
     setGrowingCrops(newCrops);
   };
 
+  const editBio = (bio) => {
+    setBio(bio);
+  };
+
   const { id } = useParams();
 
   const getUser = (id) => {
@@ -50,6 +54,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
       .then((result) => {
         const user = result.data;
         setUser(user);
+        setBio(user.bio);
       })
       .catch((err) => console.log(err));
   };
@@ -69,8 +74,6 @@ const ProfilePage = ({ authUser, setAuth }) => {
     getUser(id);
     getCrops(id);
   }, [id]);
-
-  console.log(availableCrops);
 
   return (
     <Container fluid>
@@ -111,7 +114,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
         <Col className="border border-warning mx-4">
           <h2>Bio</h2>
           <p>
-            {!user.bio ? "Fill me out!" : user.bio}
+            {!bio ? "Fill me out!" : bio}
             {authUser === id ? (
               <>
                 <Button onClick={handleShowEditBio}>Edit</Button>
@@ -119,6 +122,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
                   showEditBio={showEditBio}
                   handleCloseEditBio={handleCloseEditBio}
                   user={user}
+                  editBio={editBio}
                 />
               </>
             ) : (
@@ -150,6 +154,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
                       return (
                         <ListGroup.Item>
                           {crop.available} - {crop.quantity}
+                          {authUser === id ? <Button> Edit</Button> : ""}
                         </ListGroup.Item>
                       );
                     })}

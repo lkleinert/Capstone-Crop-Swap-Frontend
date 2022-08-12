@@ -2,7 +2,7 @@ import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 
-const BioForm = ({ user, handleCloseEditBio }) => {
+const BioForm = ({ user, handleCloseEditBio, editBio }) => {
   const [bio, setBio] = useState(user.bio);
 
   const onChange = (e) => {
@@ -22,6 +22,7 @@ const BioForm = ({ user, handleCloseEditBio }) => {
     e.preventDefault();
     updateBio(bio);
     setBio(bio);
+    editBio(bio);
     handleCloseEditBio();
   };
 
