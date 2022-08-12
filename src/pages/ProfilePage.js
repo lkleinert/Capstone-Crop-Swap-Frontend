@@ -22,7 +22,6 @@ const ProfilePage = ({ authUser, setAuth }) => {
   let navigate = useNavigate();
 
   const onSearch = () => {
-    console.log(user.zipcode);
     navigate("/users", { state: user.zipcode });
   };
 
@@ -75,8 +74,6 @@ const ProfilePage = ({ authUser, setAuth }) => {
     getUser(id);
     getCrops(id);
   }, [id]);
-
-  console.log(availableCrops);
 
   return (
     <Container fluid>
@@ -157,6 +154,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
                       return (
                         <ListGroup.Item>
                           {crop.available} - {crop.quantity}
+                          {authUser === id ? <Button> Edit</Button> : ""}
                         </ListGroup.Item>
                       );
                     })}
