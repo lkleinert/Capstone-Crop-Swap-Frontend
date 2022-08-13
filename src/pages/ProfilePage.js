@@ -5,6 +5,7 @@ import "./ProfilePage.css";
 import { useEffect, useState } from "react";
 import EditBioModal from "../components/EditBioModal";
 import AddCropModal from "../components/AddCropModal";
+import EditCropsModal from "../components/EditCropsModal";
 
 const ProfilePage = ({ authUser, setAuth }) => {
   const [user, setUser] = useState("");
@@ -12,12 +13,15 @@ const ProfilePage = ({ authUser, setAuth }) => {
   const [growingCrops, setGrowingCrops] = useState([]);
   const [showEditBio, setShowEditBio] = useState(false);
   const [showAddCrop, setShowAddCrop] = useState(false);
+  const [showEditCrops, setShowEditCrops] = useState(false);
   const [bio, setBio] = useState("");
 
   const handleShowEditBio = () => setShowEditBio(true);
   const handleCloseEditBio = () => setShowEditBio(false);
   const handleShowAddCrop = () => setShowAddCrop(true);
   const handleCloseAddCrop = () => setShowAddCrop(false);
+  const handleShowEditCrops = () => setShowEditCrops(true);
+  const handleCloseEditCrops = () => setShowEditCrops(false);
 
   let navigate = useNavigate();
 
@@ -28,6 +32,14 @@ const ProfilePage = ({ authUser, setAuth }) => {
   const logoutUser = () => {
     localStorage.clear();
     setAuth(false, "");
+  };
+
+  const updateAvailableCrops = (crops) => {
+    setAvailableCrops(crops);
+  };
+
+  const updateGrowingCrops = (crops) => {
+    setGrowingCrops(crops);
   };
 
   const addAvailableCrop = (crop) => {
@@ -141,6 +153,22 @@ const ProfilePage = ({ authUser, setAuth }) => {
                   addAvailableCrop={addAvailableCrop}
                   addGrowingCrop={addGrowingCrop}
                 />
+                {availableCrops.length > 0 || growingCrops.length > 0 ? (
+                  <>
+                    <Button onClick={handleShowEditCrops}>Edit Crops</Button>
+                    <EditCropsModal
+                      showEditCrops={showEditCrops}
+                      handleCloseEditCrops={handleCloseEditCrops}
+                      availableCrops={availableCrops}
+                      growingCrops={growingCrops}
+                      user={user}
+                      updateAvailableCrops={updateAvailableCrops}
+                      updateGrowingCrops={updateGrowingCrops}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
               </>
             ) : (
               ""
@@ -154,7 +182,6 @@ const ProfilePage = ({ authUser, setAuth }) => {
                       return (
                         <ListGroup.Item>
                           {crop.available} - {crop.quantity}
-                          {authUser === id ? <Button> Edit</Button> : ""}
                         </ListGroup.Item>
                       );
                     })}
