@@ -30,7 +30,6 @@ const SignUpForm = ({ setAuth }) => {
         zipcode: array.zipcode,
       })
       .then((result) => {
-        console.log(result.data);
         localStorage.setItem("token", result.data.token);
         setAuth(true, result.data.user.username);
         navigate(`/users/${result.data.user.username}`, { replace: true });

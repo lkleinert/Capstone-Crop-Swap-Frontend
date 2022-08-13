@@ -5,6 +5,9 @@ import "./ProfilePage.css";
 import { useEffect, useState } from "react";
 import EditBioModal from "../components/EditBioModal";
 import AddCropModal from "../components/AddCropModal";
+import EditCropsModal from "../components/EditCropsModal";
+import MessageThreads from "../components/MessageThreads";
+import MessageList from "../components/MessageList";
 
 const ProfilePage = ({ authUser, setAuth }) => {
   const [user, setUser] = useState("");
@@ -12,14 +15,18 @@ const ProfilePage = ({ authUser, setAuth }) => {
   const [growingCrops, setGrowingCrops] = useState([]);
   const [showEditBio, setShowEditBio] = useState(false);
   const [showAddCrop, setShowAddCrop] = useState(false);
+  const [showEditCrops, setShowEditCrops] = useState(false);
   const [bio, setBio] = useState("");
+  const [messages, setMessages] = useState([]);
 
   const handleShowEditBio = () => setShowEditBio(true);
   const handleCloseEditBio = () => setShowEditBio(false);
   const handleShowAddCrop = () => setShowAddCrop(true);
   const handleCloseAddCrop = () => setShowAddCrop(false);
+  const handleShowEditCrops = () => setShowEditCrops(true);
+  const handleCloseEditCrops = () => setShowEditCrops(false);
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const onSearch = () => {
     navigate("/users", { state: user.zipcode });
@@ -28,6 +35,14 @@ const ProfilePage = ({ authUser, setAuth }) => {
   const logoutUser = () => {
     localStorage.clear();
     setAuth(false, "");
+  };
+
+  const updateAvailableCrops = (crops) => {
+    setAvailableCrops(crops);
+  };
+
+  const updateGrowingCrops = (crops) => {
+    setGrowingCrops(crops);
   };
 
   const addAvailableCrop = (crop) => {
@@ -44,6 +59,12 @@ const ProfilePage = ({ authUser, setAuth }) => {
 
   const editBio = (bio) => {
     setBio(bio);
+  };
+
+  const addMessage = (message) => {
+    const newMessages = [...messages];
+    newMessages.push(message);
+    setMessages(newMessages);
   };
 
   const { id } = useParams();
@@ -70,10 +91,23 @@ const ProfilePage = ({ authUser, setAuth }) => {
       .catch((err) => console.log(err));
   };
 
+  const getMessages = (username, authUser) => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/users/${username}/messages?authUser=${authUser}`
+      )
+      .then((result) => {
+        setMessages(result.data);
+      });
+  };
+
   useEffect(() => {
     getUser(id);
     getCrops(id);
-  }, [id]);
+    if (authUser !== id) {
+      getMessages(id, authUser);
+    }
+  }, [id, authUser]);
 
   return (
     <Container fluid>
@@ -141,6 +175,22 @@ const ProfilePage = ({ authUser, setAuth }) => {
                   addAvailableCrop={addAvailableCrop}
                   addGrowingCrop={addGrowingCrop}
                 />
+                {availableCrops.length > 0 || growingCrops.length > 0 ? (
+                  <>
+                    <Button onClick={handleShowEditCrops}>Edit Crops</Button>
+                    <EditCropsModal
+                      showEditCrops={showEditCrops}
+                      handleCloseEditCrops={handleCloseEditCrops}
+                      availableCrops={availableCrops}
+                      growingCrops={growingCrops}
+                      user={user}
+                      updateAvailableCrops={updateAvailableCrops}
+                      updateGrowingCrops={updateGrowingCrops}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
               </>
             ) : (
               ""
@@ -154,7 +204,6 @@ const ProfilePage = ({ authUser, setAuth }) => {
                       return (
                         <ListGroup.Item>
                           {crop.available} - {crop.quantity}
-                          {authUser === id ? <Button> Edit</Button> : ""}
                         </ListGroup.Item>
                       );
                     })}
@@ -181,7 +230,32 @@ const ProfilePage = ({ authUser, setAuth }) => {
           </Row>
         </Col>
         <Col className="border border-danger mx-4">
-          <h2>Test2</h2>
+          {authUser === id ? (
+            <>
+              <h2>Users I'm Messaging</h2>
+              <MessageThreads user={user} />
+            </>
+          ) : !authUser ? (
+            <>
+              <h2>Messages</h2>
+              <h3>Please log in to message this user.</h3>
+            </>
+          ) : messages.length > 1 ? (
+            <>
+              <h2>Messages</h2>
+              <MessageList
+                messages={messages}
+                addMessage={addMessage}
+                username={user.username}
+                authUser={authUser}
+              />
+            </>
+          ) : (
+            <>
+              <h2>Messages</h2>
+              <Button>Send this user a message!</Button>
+            </>
+          )}
         </Col>
       </Row>
     </Container>
