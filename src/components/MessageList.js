@@ -1,7 +1,7 @@
 import Message from "../components/Message";
 import SendMessageForm from "./SendMessageForm";
 
-const MessageList = ({ messages }) => {
+const MessageList = ({ messages, addMessage, username, authUser }) => {
   return (
     <div>
       {messages.map((message) => {
@@ -14,7 +14,11 @@ const MessageList = ({ messages }) => {
           />
         );
       })}
-      <SendMessageForm />
+      <SendMessageForm
+        addMessage={addMessage}
+        username={username}
+        authUser={authUser}
+      />
     </div>
   );
 };

@@ -61,6 +61,12 @@ const ProfilePage = ({ authUser, setAuth }) => {
     setBio(bio);
   };
 
+  const addMessage = (message) => {
+    const newMessages = [...messages];
+    newMessages.push(message);
+    setMessages(newMessages);
+  };
+
   const { id } = useParams();
 
   const getUser = (id) => {
@@ -237,7 +243,12 @@ const ProfilePage = ({ authUser, setAuth }) => {
           ) : messages.length > 1 ? (
             <>
               <h2>Messages</h2>
-              <MessageList messages={messages} />
+              <MessageList
+                messages={messages}
+                addMessage={addMessage}
+                username={user.username}
+                authUser={authUser}
+              />
             </>
           ) : (
             <>
