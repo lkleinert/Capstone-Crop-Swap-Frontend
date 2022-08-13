@@ -32,13 +32,16 @@ const SearchPage = () => {
         const cropsAvailable = [];
         for (const user of filteredUsers) {
           for (const crop of user.Crops) {
-            cropsAvailable.push({
-              label: crop.available,
-              value: crop.available,
-            });
+            if (crop.available) {
+              cropsAvailable.push({
+                label: crop.available,
+                value: crop.available,
+              });
+            }
           }
         }
         setCurrentCrops(cropsAvailable);
+        console.log(cropsAvailable);
         //prevents an empty search when search page is first loading from landing page
         setLoading(true);
       });
@@ -55,7 +58,7 @@ const SearchPage = () => {
         <UserFarmSquare
           username={user.username}
           name={user.firstName}
-          crops={user.Crops}
+          crops={user.Crops.filter((crop) => crop.available !== null)}
           zipcode={user.zipcode}
         />
       </div>

@@ -1,12 +1,13 @@
 .card {
-    width: 375px !important;
-    height: 375px !important;
+    width: 350px !important;
+    height: 425px !important;
     margin: 40px !important;
+    /* border: 2px black solid !important; */
 }
 .image-container  {
     /* background-color: orange; */
-    width: 375px !important; 
-    height: 275px !important;
+    width: 350px !important; 
+    height: 250px !important;
     align-items: center;
     justify-content: center;
 }
@@ -24,8 +25,14 @@
 .crop-details {
     background-color: rgb(163, 226, 163);
     border-radius: 20px;
+    /* margin: 10px */
 }
 
-/* .user-button {
+#extra-options {
+    background-color:	#ffc107;
+    border-radius: 20px;
+}
+
+.user-button {
     margin: 7px;
-} */
+}
