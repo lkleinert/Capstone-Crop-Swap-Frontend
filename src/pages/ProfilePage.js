@@ -8,6 +8,7 @@ import AddCropModal from "../components/AddCropModal";
 import EditCropsModal from "../components/EditCropsModal";
 import MessageThreads from "../components/MessageThreads";
 import MessageList from "../components/MessageList";
+import SendMessageForm from "../components/SendMessageForm";
 
 const ProfilePage = ({ authUser, setAuth }) => {
   const [user, setUser] = useState("");
@@ -18,6 +19,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
   const [showEditCrops, setShowEditCrops] = useState(false);
   const [bio, setBio] = useState("");
   const [messages, setMessages] = useState([]);
+  const [showSendMessageForm, setShowSendMessageForm] = useState(false);
 
   const handleShowEditBio = () => setShowEditBio(true);
   const handleCloseEditBio = () => setShowEditBio(false);
@@ -240,7 +242,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
               <h2>Messages</h2>
               <h3>Please log in to message this user.</h3>
             </>
-          ) : messages.length > 1 ? (
+          ) : messages.length > 0 ? (
             <>
               <h2>Messages</h2>
               <MessageList
@@ -253,7 +255,18 @@ const ProfilePage = ({ authUser, setAuth }) => {
           ) : (
             <>
               <h2>Messages</h2>
-              <Button>Send this user a message!</Button>
+              <Button onClick={(e) => setShowSendMessageForm(true)}>
+                Send this user a message!
+              </Button>
+              {showSendMessageForm ? (
+                <SendMessageForm
+                  addMessage={addMessage}
+                  username={user.username}
+                  authUser={authUser}
+                />
+              ) : (
+                ""
+              )}
             </>
           )}
         </Col>
