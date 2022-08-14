@@ -1,13 +1,14 @@
-.card {
-    width: 350px !important;
-    height: 425px !important;
-    margin: 40px !important;
+.userCard {
+    width: 350px;
+    height: 425px;
+    margin: 40px;
     /* border: 2px black solid !important; */
 }
+
 .image-container  {
     /* background-color: orange; */
-    width: 350px !important; 
-    height: 250px !important;
+    width: 350px;
+    height: 250px ;
     align-items: center;
     justify-content: center;
 }

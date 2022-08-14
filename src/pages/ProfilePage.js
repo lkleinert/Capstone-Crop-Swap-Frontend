@@ -113,7 +113,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
 
   return (
     <Container fluid>
-      <Row className="top-bar m-5 mb-4">
+      <Row className="top-bar p-4">
         <Col xs={7}>
           <h1>CropSwap🌱</h1>
         </Col>
@@ -141,19 +141,24 @@ const ProfilePage = ({ authUser, setAuth }) => {
           </Button>
         </Col>
       </Row>
-      <Row className="border border-success border-2 m-4 align-items-center">
-        <Col>
+      <Row className="m-4 align-items-center">
+        <Col className="py-4">
+          <img alt="profile" src={`/crop_images/${id}.jpeg`} />
           <h1>{user.firstName}'s Garden</h1>
         </Col>
-      </Row>
-      <Row>
-        <Col className="border border-warning mx-4">
-          <h2>Bio</h2>
+        <Col>
+          <h2>About Me</h2>
           <p>
             {!bio ? "Fill me out!" : bio}
             {authUser === id ? (
               <>
-                <Button onClick={handleShowEditBio}>Edit</Button>
+                <br />
+                <Button
+                  variant="outline-success my-2"
+                  onClick={handleShowEditBio}
+                >
+                  Edit
+                </Button>
                 <EditBioModal
                   showEditBio={showEditBio}
                   handleCloseEditBio={handleCloseEditBio}
@@ -165,11 +170,17 @@ const ProfilePage = ({ authUser, setAuth }) => {
               ""
             )}
           </p>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={7} className="border border-warning mx-4">
           <Row>
             <h2>Crops</h2>
             {authUser === id ? (
               <>
-                <Button onClick={handleShowAddCrop}>Add Crop</Button>
+                <Col>
+                  <Button onClick={handleShowAddCrop}>Add Crop</Button>
+                </Col>
                 <AddCropModal
                   showAddCrop={showAddCrop}
                   handleCloseAddCrop={handleCloseAddCrop}
@@ -179,7 +190,9 @@ const ProfilePage = ({ authUser, setAuth }) => {
                 />
                 {availableCrops.length > 0 || growingCrops.length > 0 ? (
                   <>
-                    <Button onClick={handleShowEditCrops}>Edit Crops</Button>
+                    <Col>
+                      <Button onClick={handleShowEditCrops}>Edit Crops</Button>
+                    </Col>
                     <EditCropsModal
                       showEditCrops={showEditCrops}
                       handleCloseEditCrops={handleCloseEditCrops}
@@ -197,8 +210,10 @@ const ProfilePage = ({ authUser, setAuth }) => {
             ) : (
               ""
             )}
-            <Col>
-              <Card>
+          </Row>
+          <Row>
+            <Col xs={6}>
+              <Card border="success" id="availableCard">
                 <Card.Body>
                   <Card.Title>Available</Card.Title>
                   <ListGroup>
@@ -213,8 +228,8 @@ const ProfilePage = ({ authUser, setAuth }) => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col>
-              <Card>
+            <Col xs={6}>
+              <Card border="success" id="growingCard">
                 <Card.Body>
                   <Card.Title>Growing</Card.Title>
                   <ListGroup>
@@ -231,7 +246,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
             </Col>
           </Row>
         </Col>
-        <Col className="border border-danger mx-4">
+        <Col className="border border-danger me-4">
           {authUser === id ? (
             <>
               <h2>Users I'm Messaging</h2>

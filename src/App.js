@@ -3,7 +3,6 @@ import "./App.css";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
 import LandingPage from "./pages/LandingPage";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 
 function App() {

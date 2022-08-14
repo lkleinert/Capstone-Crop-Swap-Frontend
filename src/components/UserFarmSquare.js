@@ -43,7 +43,7 @@ const UserFarmSquare = ({ username, name, crops, zipcode }) => {
   };
 
   return (
-    <Card className="m-3 card">
+    <Card className="m-3 userCard">
       <div className="image-container">
         <Card.Img src={userImage}></Card.Img>
       </div>
