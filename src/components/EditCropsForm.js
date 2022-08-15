@@ -8,6 +8,7 @@ const EditCropsForm = ({
   user,
   updateAvailableCrops,
   updateGrowingCrops,
+  handleCloseEditCrops,
 }) => {
   const [aCrops, setACrops] = useState(availableCrops);
   const [gCrops, setGCrops] = useState(growingCrops);
@@ -41,6 +42,9 @@ const EditCropsForm = ({
       )
       .then((result) => {
         const newACrops = aCrops.filter((crop) => crop.id !== id);
+        if (newACrops.length === 0 && gCrops.length === 0) {
+          handleCloseEditCrops();
+        }
         setACrops(newACrops);
         updateAvailableCrops(newACrops);
       })
@@ -54,6 +58,9 @@ const EditCropsForm = ({
       )
       .then((result) => {
         const newGCrops = gCrops.filter((crop) => crop.id !== id);
+        if (newGCrops.length === 0 && aCrops.length === 0) {
+          handleCloseEditCrops();
+        }
         setGCrops(newGCrops);
         updateGrowingCrops(newGCrops);
       })
@@ -101,13 +108,14 @@ const EditCropsForm = ({
         return (
           <Form.Group
             as={Row}
-            className="mb-2"
+            className="mb-2 align-items-center"
             controlId="formEditAvailableCrops"
+            key={crop.id}
           >
-            <Form.Label column sm={2}>
+            <Form.Label column xs={3} className="pe-0">
               {crop.available}
             </Form.Label>
-            <Col sm={4}>
+            <Col xs={5}>
               <Form.Control
                 type="text"
                 name={crop.id}
@@ -117,12 +125,22 @@ const EditCropsForm = ({
               />
             </Col>
             <Col>
-              <Button onClick={(e) => onUpdateAvailable(crop)}>
+              <Button
+                variant="success"
+                type="button"
+                size="sm"
+                onClick={(e) => onUpdateAvailable(crop)}
+              >
                 Save Change
               </Button>
             </Col>
             <Col>
-              <Button onClick={(e) => onDeleteAvailable(crop.id)}>
+              <Button
+                variant="success"
+                type="button"
+                size="sm"
+                onClick={(e) => onDeleteAvailable(crop.id)}
+              >
                 Delete Crop
               </Button>
             </Col>
@@ -134,13 +152,13 @@ const EditCropsForm = ({
         return (
           <Form.Group
             as={Row}
-            className="mb-2"
+            className="mb-2 align-items-center"
             controlId="formEditGrowingCrops"
           >
-            <Form.Label column sm={2}>
+            <Form.Label column xs={3} className="pe-0">
               {crop.growing}
             </Form.Label>
-            <Col sm={4}>
+            <Col xs={5}>
               <Form.Control
                 type="text"
                 name={crop.id}
@@ -150,12 +168,22 @@ const EditCropsForm = ({
               />
             </Col>
             <Col>
-              <Button onClick={(e) => onUpdateGrowing(crop)}>
+              <Button
+                variant="success"
+                type="button"
+                size="sm"
+                onClick={(e) => onUpdateGrowing(crop)}
+              >
                 Save Change
               </Button>
             </Col>
             <Col>
-              <Button onClick={(e) => onDeleteGrowing(crop.id)}>
+              <Button
+                variant="success"
+                type="button"
+                size="sm"
+                onClick={(e) => onDeleteGrowing(crop.id)}
+              >
                 Delete Crop
               </Button>
             </Col>

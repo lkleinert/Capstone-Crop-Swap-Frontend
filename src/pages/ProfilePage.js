@@ -116,10 +116,10 @@ const ProfilePage = ({ authUser, setAuth }) => {
   return (
     <Container fluid className="profile-page">
       <Row className="top-bar p-4">
-        <Col xs={7}>
+        <Col xs={3} className="mx-2">
           <h1>CropSwap🌱</h1>
         </Col>
-        <Col>
+        <Col xs={{ span: 2, offset: 3 }}>
           {!authUser ? (
             <Button variant="warning" type="link" href="/">
               Home
@@ -144,11 +144,13 @@ const ProfilePage = ({ authUser, setAuth }) => {
         </Col>
       </Row>
       <Row className="border-top border-bottom border-secondary border-2 align-items-center headStrip">
-        <Col className="py-4">
-          <img alt="profile" src={`/crop_images/${id}.jpeg`} />
+        <Row>
           <h1 className="text-decoration-underline">
             {user.firstName}'s Garden
           </h1>
+        </Row>
+        <Col className="py-4">
+          <img alt="profile" src={`/crop_images/${id}.jpeg`} />
         </Col>
         <Col className="bg-light mx-4 p-2 rounded">
           <h2 className="text-decoration-underline">About Me</h2>

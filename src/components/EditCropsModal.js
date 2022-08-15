@@ -1,5 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 import EditCropsForm from "./EditCropsForm";
+import "./EditCropsModal.css";
 
 const EditCropsModal = ({
   showEditCrops,
@@ -11,7 +12,7 @@ const EditCropsModal = ({
   updateGrowingCrops,
 }) => {
   return (
-    <Modal show={showEditCrops}>
+    <Modal show={showEditCrops} className="edit-crops-modal">
       <Modal.Header>
         <Modal.Title>Edit Crops</Modal.Title>
       </Modal.Header>
@@ -22,6 +23,7 @@ const EditCropsModal = ({
           user={user}
           updateAvailableCrops={updateAvailableCrops}
           updateGrowingCrops={updateGrowingCrops}
+          handleCloseEditCrops={handleCloseEditCrops}
         />
       </Modal.Body>
       <Modal.Footer>
