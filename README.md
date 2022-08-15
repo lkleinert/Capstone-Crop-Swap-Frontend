@@ -1,6 +1,6 @@
 # Introduction
 
-CropSwap is a web app that allows users to search, post, and message about their excess backyard garden produce.  Users can choose to swap or share produce with nearby neighbors through messages.  This app can be found on [Heroku](address). It is integrated with an [Express/Node.js API](https://github.com/lkleinert/Captsone-Crop-Swap) that can also be found on [Heroku](https://crop-swap-backend.herokuapp.com/users).
+CropSwap is a web application that allows users to search, post, and message about their excess backyard garden produce.  Users can choose to swap or share produce with nearby neighbors through messaging.  This app can be found on [Heroku](https://crop-swap-frontend.herokuapp.com/). It is integrated with an [Express/Node.js API](https://github.com/lkleinert/Captsone-Crop-Swap) that can also be found on [Heroku](https://crop-swap-backend.herokuapp.com/users).
 
 
 <img src="/public/crop_images/SearchUsersRM.png" alt="Landing Page" width="750px" height="400px">.    <img src="/public/crop_images/SearchPageRM.png" alt="Search Page" width="750px" height="350px">.
@@ -9,7 +9,8 @@ CropSwap is a web app that allows users to search, post, and message about their
 
 * Search for garden produce by zipcode
 * Filter searches by crops available
-* Create profile to post/edit and message about a user's own and other users' produce
+* Create user profiles to post, update and delete available produce
+* Message other users and inquire about their available produce
 
 ## Dependencies
 
