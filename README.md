@@ -19,6 +19,7 @@ CropSwap is a web app that allows users to search, post, and message about their
 * Bootstrap
 * React-Multiselect-Component
 * Axios
+* Luxon
 
 ## Installation
 
