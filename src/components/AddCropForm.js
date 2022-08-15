@@ -22,8 +22,6 @@ const AddCropForm = ({
   const addCrop = (array) => {
     const forNullCrop =
       array.cropType === "available" ? "growing" : "available";
-    console.log(cropType);
-    console.log(forNullCrop);
     axios
       .post(
         `${process.env.REACT_APP_BACKEND_URL}/users/${user.username}/crops`,

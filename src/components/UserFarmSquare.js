@@ -3,10 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./UserFarmSquare.css";
 
 const UserFarmSquare = ({ username, name, crops, zipcode }) => {
-  //how to print out each available crop name? also, crops-available and create an array
-  //map and display another component for each crop-> if more than 3, add "and more!"
-  // console.log(crops);
-
   const userImage = `./crop_images/${username}.jpeg`;
 
   let cardCrops;
@@ -37,7 +33,6 @@ const UserFarmSquare = ({ username, name, crops, zipcode }) => {
 
   const navigate = useNavigate();
   const visitProfilePage = () => {
-    console.log(username);
     const userProfile = `/users/${username}`;
     navigate(userProfile);
   };

@@ -1,6 +1,4 @@
-
 .zipcode {
-    /* border: 2px black solid; */
     display: flex;
     flex-direction: row;
     justify-content: center;

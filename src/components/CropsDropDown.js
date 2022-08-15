@@ -10,7 +10,6 @@ const CropsDropDown = ({ currentCrops, currentZipcode, findUsers }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleOnClick = () => {
-    console.log(selectedOptions);
     const selectedCropArray = [];
     for (const crop of selectedOptions) {
       selectedCropArray.push(crop.label);
