@@ -31,10 +31,10 @@ const SendMessageForm = ({ addMessage, username, authUser }) => {
   return (
     <Form onSubmit={onSubmitForm} className="m-2">
       <Form.Group as={Row} controlId="FormAddMessage">
-        <Form.Label column xs={2}>
+        <Form.Label column xs={3}>
           Message
         </Form.Label>
-        <Col xs={8} className="pe-0">
+        <Col xs={7} className="p-0">
           <Form.Control
             type="text"
             value={message}

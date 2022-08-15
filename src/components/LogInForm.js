@@ -8,6 +8,7 @@ const LogInForm = ({ setAuth }) => {
     username: "",
     password: "",
   });
+  const [error, setError] = useState("");
 
   let navigate = useNavigate();
 
@@ -24,9 +25,10 @@ const LogInForm = ({ setAuth }) => {
       .then((result) => {
         localStorage.setItem("token", result.data);
         setAuth(true, array.username);
+        setError("");
         navigate(`/users/${array.username}`, { replace: true });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err.response.status));
   };
 
   const onSubmitForm = (e) => {
@@ -60,6 +62,13 @@ const LogInForm = ({ setAuth }) => {
           required
         />
       </Form.Group>
+      {error === 401 ? (
+        <p className="text-danger">Invalid password.</p>
+      ) : error === 400 ? (
+        <p className="text-danger">Invalid username.</p>
+      ) : (
+        ""
+      )}
       <Button variant="success" type="submit" className="createUser">
         Log In
       </Button>

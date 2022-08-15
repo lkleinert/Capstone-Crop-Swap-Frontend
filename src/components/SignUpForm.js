@@ -13,6 +13,7 @@ const SignUpForm = ({ setAuth }) => {
     password: "",
     zipcode: "",
   });
+  const [error, setError] = useState("");
 
   let navigate = useNavigate();
 
@@ -34,7 +35,7 @@ const SignUpForm = ({ setAuth }) => {
         setAuth(true, result.data.user.username);
         navigate(`/users/${result.data.user.username}`, { replace: true });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err.response.data.message));
   };
 
   const onSubmitForm = (e) => {
@@ -102,6 +103,7 @@ const SignUpForm = ({ setAuth }) => {
           required
         />
       </Form.Group>
+      {error ? <p className="text-danger">{error}</p> : ""}
       <Button variant="success" type="submit" className="createUser">
         Create New User
       </Button>
