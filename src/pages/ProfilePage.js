@@ -12,6 +12,8 @@ import MessageThreads from "../components/MessageThreads";
 import MessageList from "../components/MessageList";
 import SendMessageForm from "../components/SendMessageForm";
 
+//definitely room for refactoring here...
+
 const ProfilePage = ({ authUser, setAuth }) => {
   const [user, setUser] = useState("");
   const [availableCrops, setAvailableCrops] = useState([]);
