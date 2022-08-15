@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const LogInForm = ({ setAuth }) => {
-  //here would be logic for holding state of input fields (which are FormControls in Bootstrap React)
-  //need some sort of onSubmit function for Button, which would check username/password and will link to appropriate page
   const [inputs, setInputs] = useState({
     username: "",
     password: "",

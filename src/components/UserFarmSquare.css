@@ -2,11 +2,9 @@
     width: 350px;
     height: 425px;
     margin: 40px;
-    /* border: 2px black solid !important; */
 }
 
 .image-container  {
-    /* background-color: orange; */
     width: 350px;
     height: 250px ;
     align-items: center;
@@ -18,15 +16,13 @@
     width: 100%;
 }
 
-/* .card-body {
-   width: 100px;
-   height: 100px;
-} */
 
 .crop-details {
     background-color: rgb(163, 226, 163);
     border-radius: 20px;
-    /* margin: 10px */
+    margin: 9px; 
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 #extra-options {

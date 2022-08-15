@@ -1,11 +1,8 @@
 .top-bar {
-    /* border: black solid 2px; */
     justify-content: center;
     align-items: center;
 }
 .landing-pic {
-    /* border: 2px black solid; */
-    /* background-image: url("https://img.freepik.com/premium-photo/child-father-garden-with-vegetables-their-hands_73944-8714.jpg?w=1380"); */
     background-image: url("../../public/crop_images/LandingPageFinal.jpg");
     background-repeat: no-repeat, repeat;
     background-position: center;
@@ -20,14 +17,10 @@
 }
 
 .banner {
-    /* border: 2px black solid; */
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
-    /* align-content: center; */
 }
 .banner h1 {
-    /* border: 2px black solid; */
     font-size: 3rem;
     background-color: #fbf9f973;
     border-radius: 20px;

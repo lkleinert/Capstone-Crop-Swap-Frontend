@@ -24,7 +24,6 @@ const SearchPage = () => {
       .then((res) => {
         const users = res.data;
         const filteredUsers = users.filter((user) => user.Crops.length > 0);
-        console.log(filteredUsers);
         setCurrentUsers(filteredUsers);
         return filteredUsers;
       })
@@ -41,7 +40,6 @@ const SearchPage = () => {
           }
         }
         setCurrentCrops(cropsAvailable);
-        console.log(cropsAvailable);
         //prevents an empty search when search page is first loading from landing page
         setLoading(true);
       });
@@ -49,7 +47,6 @@ const SearchPage = () => {
 
   useEffect(() => {
     findUsers(currentZipcode, currentCrops);
-    // setLoading(true);
   }, []);
 
   const userArray = currentUsers.map((user) => {
