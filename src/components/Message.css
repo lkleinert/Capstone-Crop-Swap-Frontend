@@ -1,0 +1,21 @@
+.messageFromMe {
+    text-align: left;
+    padding: 6px;
+    border: 1px solid black;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    background: rgba(76, 175, 80, 0.3);
+}
+
+p {
+    margin-bottom: 2px;
+}
+
+.messageToMe {
+    text-align: right;
+    padding: 6px;
+    border: 1px solid black;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    background: rgba(227, 179, 68, 0.3);
+}

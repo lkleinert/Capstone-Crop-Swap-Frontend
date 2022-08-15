@@ -2,6 +2,8 @@ import axios from "axios";
 import { Container, Col, Row, Button, Card, ListGroup } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
+import "../components/Message.css";
+import "../components/MessageList.css";
 import { useEffect, useState } from "react";
 import EditBioModal from "../components/EditBioModal";
 import AddCropModal from "../components/AddCropModal";
@@ -112,7 +114,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
   }, [id, authUser]);
 
   return (
-    <Container fluid>
+    <Container fluid className="profile-page">
       <Row className="top-bar p-4">
         <Col xs={7}>
           <h1>CropSwap🌱</h1>
@@ -136,18 +138,20 @@ const ProfilePage = ({ authUser, setAuth }) => {
           </Col>
         ) : null}
         <Col>
-          <Button variant="primary" type="input" onClick={onSearch}>
+          <Button variant="secondary" type="input" onClick={onSearch}>
             Search
           </Button>
         </Col>
       </Row>
-      <Row className="m-4 align-items-center">
+      <Row className="border-top border-bottom border-secondary border-2 align-items-center headStrip">
         <Col className="py-4">
           <img alt="profile" src={`/crop_images/${id}.jpeg`} />
-          <h1>{user.firstName}'s Garden</h1>
+          <h1 className="text-decoration-underline">
+            {user.firstName}'s Garden
+          </h1>
         </Col>
-        <Col>
-          <h2>About Me</h2>
+        <Col className="bg-light mx-4 p-2 rounded">
+          <h2 className="text-decoration-underline">About Me</h2>
           <p>
             {!bio ? "Fill me out!" : bio}
             {authUser === id ? (
@@ -172,14 +176,19 @@ const ProfilePage = ({ authUser, setAuth }) => {
           </p>
         </Col>
       </Row>
-      <Row>
-        <Col xs={7} className="border border-warning mx-4">
+      <Row className="my-5">
+        <Col
+          xs={7}
+          className="border border-secondary border-2 rounded mx-4 p-2 cropsColumn"
+        >
           <Row>
-            <h2>Crops</h2>
+            <h2 className="text-decoration-underline">Crops</h2>
             {authUser === id ? (
               <>
                 <Col>
-                  <Button onClick={handleShowAddCrop}>Add Crop</Button>
+                  <Button variant="success my-2" onClick={handleShowAddCrop}>
+                    Add Crop
+                  </Button>
                 </Col>
                 <AddCropModal
                   showAddCrop={showAddCrop}
@@ -191,7 +200,12 @@ const ProfilePage = ({ authUser, setAuth }) => {
                 {availableCrops.length > 0 || growingCrops.length > 0 ? (
                   <>
                     <Col>
-                      <Button onClick={handleShowEditCrops}>Edit Crops</Button>
+                      <Button
+                        variant="success my-2"
+                        onClick={handleShowEditCrops}
+                      >
+                        Edit Crops
+                      </Button>
                     </Col>
                     <EditCropsModal
                       showEditCrops={showEditCrops}
@@ -246,20 +260,20 @@ const ProfilePage = ({ authUser, setAuth }) => {
             </Col>
           </Row>
         </Col>
-        <Col className="border border-danger me-4">
+        <Col className="border border-secondary border-2 rounded me-4 messagesColumn">
           {authUser === id ? (
             <>
-              <h2>Users I'm Messaging</h2>
+              <h2 className="text-decoration-underline">Users I'm Messaging</h2>
               <MessageThreads user={user} />
             </>
           ) : !authUser ? (
             <>
-              <h2>Messages</h2>
+              <h2 className="text-decoration-underline">Messages</h2>
               <h3>Please log in to message this user.</h3>
             </>
           ) : messages.length > 0 ? (
             <>
-              <h2>Messages</h2>
+              <h2 className="text-decoration-underline">Messages</h2>
               <MessageList
                 messages={messages}
                 addMessage={addMessage}
@@ -269,8 +283,11 @@ const ProfilePage = ({ authUser, setAuth }) => {
             </>
           ) : (
             <>
-              <h2>Messages</h2>
-              <Button onClick={(e) => setShowSendMessageForm(true)}>
+              <h2 className="text-decoration-underline">Messages</h2>
+              <Button
+                variant="success"
+                onClick={(e) => setShowSendMessageForm(true)}
+              >
                 Send this user a message!
               </Button>
               {showSendMessageForm ? (

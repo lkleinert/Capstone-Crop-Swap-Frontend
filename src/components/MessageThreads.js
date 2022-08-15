@@ -34,6 +34,7 @@ const MessageThreads = ({ user }) => {
             <ListGroup.Item>
               {user}{" "}
               <Button
+                variant="success mx-2"
                 onClick={() => {
                   navigate(`/users/${user}`);
                 }}

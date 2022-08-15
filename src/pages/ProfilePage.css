@@ -1,3 +1,7 @@
+.profile-page {
+    font-family: Georgia, serif;
+}
+
 #availableCard {
     margin: 5px;
     height: auto;
@@ -12,5 +16,18 @@ img {
     border-radius: 8px;
     width: 250px;
     height: 150px;
+}
+
+.headStrip {
+    background: rgba(76, 175, 80, 0.3);
+}
+
+.cropsColumn {
+    background: rgba(189, 194, 96, 0.3)
+}
+
+.messagesColumn {
+    background: rgba(164, 152, 57, 0.3);
+    min-height: 200px;
 }
 
