@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
+import "./pages/ProfilePage";
+import "./pages/SearchPage";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
 import LandingPage from "./pages/LandingPage";

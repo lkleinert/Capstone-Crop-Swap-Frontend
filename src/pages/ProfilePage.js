@@ -12,8 +12,6 @@ import MessageThreads from "../components/MessageThreads";
 import MessageList from "../components/MessageList";
 import SendMessageForm from "../components/SendMessageForm";
 
-//definitely room for refactoring here...
-
 const ProfilePage = ({ authUser, setAuth }) => {
   const [user, setUser] = useState("");
   const [availableCrops, setAvailableCrops] = useState([]);
@@ -184,7 +182,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
           className="border border-secondary border-2 rounded mx-4 p-2 cropsColumn"
         >
           <Row>
-            <h2>Crops</h2>
+            <h2 className="text-decoration-underline">Crops</h2>
             {authUser === id ? (
               <>
                 <Col>
