@@ -145,15 +145,13 @@ const ProfilePage = ({ authUser, setAuth }) => {
       </Row>
       <Row className="border-top border-bottom border-secondary border-2 align-items-center headStrip">
         <Row>
-          <h1 className="text-decoration-underline">
-            {user.firstName}'s Garden
-          </h1>
+          <h1>{user.firstName}'s Garden</h1>
         </Row>
         <Col className="py-4">
           <img alt="profile" src={`/crop_images/${id}.jpeg`} />
         </Col>
         <Col className="bg-light mx-4 p-2 rounded">
-          <h2 className="text-decoration-underline">About Me</h2>
+          <h2>About Me</h2>
           <p>
             {!bio ? "Fill me out!" : bio}
             {authUser === id ? (
@@ -184,7 +182,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
           className="border border-secondary border-2 rounded mx-4 p-2 cropsColumn"
         >
           <Row>
-            <h2 className="text-decoration-underline">Crops</h2>
+            <h2>Crops</h2>
             {authUser === id ? (
               <>
                 <Col>
@@ -265,17 +263,17 @@ const ProfilePage = ({ authUser, setAuth }) => {
         <Col className="border border-secondary border-2 rounded me-4 messagesColumn">
           {authUser === id ? (
             <>
-              <h2 className="text-decoration-underline">Users I'm Messaging</h2>
+              <h2>Users I'm Messaging</h2>
               <MessageThreads user={user} />
             </>
           ) : !authUser ? (
             <>
-              <h2 className="text-decoration-underline">Messages</h2>
+              <h2>Messages</h2>
               <h3>Please log in to message this user.</h3>
             </>
           ) : messages.length > 0 ? (
             <>
-              <h2 className="text-decoration-underline">Messages</h2>
+              <h2>Messages</h2>
               <MessageList
                 messages={messages}
                 addMessage={addMessage}
@@ -285,7 +283,7 @@ const ProfilePage = ({ authUser, setAuth }) => {
             </>
           ) : (
             <>
-              <h2 className="text-decoration-underline">Messages</h2>
+              <h2>Messages</h2>
               <Button
                 variant="success"
                 onClick={(e) => setShowSendMessageForm(true)}

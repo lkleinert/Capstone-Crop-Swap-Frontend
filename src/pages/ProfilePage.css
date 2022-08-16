@@ -16,14 +16,17 @@ img {
 
 .headStrip {
     background: rgba(76, 175, 80, 0.3);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 .cropsColumn {
-    background: rgba(189, 194, 96, 0.3)
+    background: rgba(189, 194, 96, 0.3);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 .messagesColumn {
     background: rgba(164, 152, 57, 0.3);
     min-height: 200px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
